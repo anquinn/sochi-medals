@@ -1,15 +1,14 @@
 <?php
 
-    # include the library
+    // include the library
     include('simple_html_dom.php');
     
-    # this is the global array we fill with row information
-    //$rows = array();
+    // these are the global arrays
     $theData = array();
     $tableData = array();
     $canada = array();
 
-    # passing in the first page to parse, it will crawl to the end on its own
+    // scrape the page
     $theData = getMedals('http://olympics.cbc.ca/medals/');
     $canada = weAreWinter($theData);
     $weAreBetter = notAsGood($theData, $canada[0]);
@@ -37,15 +36,6 @@
             $theData[] = $rowData;
         }
 
-    //print_r($theData);
-
-        // for($x=0; $x < count($theData); $x++) {
-        //     for($y=0; $y < count($theData[$x]); $y++) {
-        //         // if($y=1)
-        //         //     echo "hello";
-        //         //echo $theData[$x][$y];
-        //     }
-        // }
         return $theData;
         
     }
@@ -59,9 +49,6 @@
                 $canada[3] = $theData[$x][4];
                 $canada[4] = strip_tags($theData[$x][5]);
 
-                // for($i=0; $i < count($canada); $i++) {
-                //     echo $canada[$i]; 
-                // }
             }
         } 
 
@@ -86,11 +73,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Canadian Medals</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -149,7 +134,7 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!-- Google Analytics -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
